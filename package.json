@@ -29,7 +29,7 @@
     "url": "https://github.com/vapurrmaid/Validate"
   },
   "scripts": {
-    "build": "tsc -p",
+    "build": "tsc -p .",
     "build:clean": "npm run clean:build && npm run build",
     "clean": "npm run clean:build && npm run clean:jest",
     "clean:build": "rimraf dist",
