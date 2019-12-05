@@ -37,6 +37,8 @@
     "lint": "npm run lint:js && npm run lint:md",
     "lint:js": "eslint . --color --ext .ts src",
     "lint:md": "markdownlint --ignore \"**/node_modules/**\" .",
+    "release": "release-it",
+    "release:beta": "release-it --preRelease=beta",
     "test": "jest",
     "test:coverage": "npm run clean:jest && jest --colors --coverage",
     "test:watch": "jest --watch"
