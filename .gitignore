@@ -1,0 +1,37 @@
+# Build
+dist
+
+# Dependencies
+*.tgz
+jspm_packages/
+.npm
+node_modules/
+.yarn-integrity
+
+# Diagnostic Reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Environment
+.env
+.env.test
+
+# ES Lint
+.eslintcache
+
+# Logs
+*.log
+lerna-debug.log*
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing & Coverage
+*.lcov
+coverage
+lib-cov
+.nyc_output
+
+# TypeScript
+*.tsbuildinfo
+typings/

@@ -1,0 +1,74 @@
+{
+  "name": "@vapurrmaid/validate",
+  "version": "0.0.0",
+  "description": "Zero-dependency lightweight class for assisting in highly-readable, maintainable validation. Inspired by the Java library org.apache.commons.lang3.Validate and its use in Domain Driven Design.",
+  "keywords": [
+    "assertion",
+    "common",
+    "domain driven design",
+    "validate",
+    "validation",
+    "validator"
+  ],
+  "homepage": "https://github.com/vapurrmaid/Validate",
+  "bugs": {
+    "email": "vapurrmaid@pm.me",
+    "url": "https://github.com/vapurrmaid/Validate/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "email": "vapurrmaid@pm.me",
+    "name": "Gregory (Grey) Barkans",
+    "url": "https://github.com/vapurrmaid"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vapurrmaid/Validate"
+  },
+  "scripts": {
+    "build": "tsc -p",
+    "build:clean": "npm run clean:build && npm run build",
+    "clean": "npm run clean:build && npm run clean:jest",
+    "clean:build": "rimraf dist",
+    "clean:jest": "jest --clearCache && rimraf coverage",
+    "lint": "npm run lint:js && npm run lint:md",
+    "lint:js": "eslint . --color --ext .ts src",
+    "lint:md": "markdownlint --ignore \"**/node_modules/**\" .",
+    "test": "jest",
+    "test:coverage": "npm run clean:jest && jest --colors --coverage",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.5.0",
+    "markdownlint-cli": "^0.19.0",
+    "release-it": "^12.4.3",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm audit"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}

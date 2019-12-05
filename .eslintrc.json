@@ -1,0 +1,40 @@
+{
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript"
+  ],
+  "overrides": [
+    {
+      "env": {
+        "jest": true
+      },
+      "files": [
+        "*.test.ts"
+      ]
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "root": true,
+  "rules": {
+    "import/prefer-default-export": "off",
+    "import/no-default-export": [
+      "error"
+    ],
+    "indent": "off",
+    "no-console": "off",
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/semi": [
+      "error"
+    ]
+  }
+}
