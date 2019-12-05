@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "alwaysStrict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "diagnostics": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": true,
     "lib": [
