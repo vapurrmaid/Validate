@@ -1,6 +1,6 @@
 {
   "name": "@vapurrmaid/validate",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-beta.2",
   "description": "Zero-dependency lightweight class for assisting in highly-readable, maintainable validation. Inspired by the Java library org.apache.commons.lang3.Validate and its use in Domain Driven Design.",
   "keywords": [
     "assertion",
