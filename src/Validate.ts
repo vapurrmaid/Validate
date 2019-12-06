@@ -8,13 +8,13 @@ import { ValidateNegation } from './ValidateNegation';
  */
 export class Validate {
   /**
-  * Validates that the provided expression is true; otherwise throws an
-  * Error with the provided message.
-  *
-  * @param expression Expression to be validated
-  * @param message Error message
-  * @throws Error if the expression is not true
-  */
+   * Validates that the provided expression is true; otherwise throws an
+   * Error with the provided message.
+   *
+   * @param expression Expression to be validated
+   * @param message Error message
+   * @throws Error if the expression is not true
+   */
   public static isTrue(expression: boolean, message: string): void {
     if (!expression) {
       throw new Error(message);
