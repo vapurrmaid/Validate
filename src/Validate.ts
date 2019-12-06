@@ -8,6 +8,22 @@ import { ValidateNegation } from './ValidateNegation';
  */
 export class Validate {
   /**
+   * Validates that the provided number is inclusively between the start and
+   * end; otherwise, throws a RangeError.
+   *
+   * @param start the inclusive start value
+   * @param end the inclusive end value
+   * @param value the number to validate
+   * @param message RangeError message if the value is outside the boundaries
+   * @throws RangeError if the value is outside the boundaries
+   */
+  public static inclusiveBetween(start: number, end: number, value: number, message: string): void {
+    if (value < start || value > end) {
+      throw new RangeError(message);
+    }
+  }
+
+  /**
    * Validates that the provided expression is true; otherwise throws an
    * Error with the provided message.
    *
