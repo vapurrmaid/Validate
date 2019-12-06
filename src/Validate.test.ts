@@ -16,4 +16,10 @@ describe('Validate', () => {
       expect(shouldThrow).toThrowError('test');
     });
   });
+
+  describe('Valid.not', () => {
+    it('is defined', () => {
+      expect(Validate.not).toBeDefined();
+    });
+  });
 });
