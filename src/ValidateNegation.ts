@@ -1,4 +1,10 @@
 export class ValidateNegation {
+  public static exclusiveBetween(start: number, end: number, value: number, message: string): void {
+    if (!(value <= start || value >= end)) {
+      throw new RangeError(message);
+    }
+  }
+
   public static inclusiveBetween(start: number, end: number, value: number, message: string): void {
     if (!(value < start || value > end)) {
       throw new RangeError(message);
