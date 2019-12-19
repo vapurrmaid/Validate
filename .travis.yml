@@ -12,6 +12,7 @@ script:
 
 before_deploy:
   - npm run build:clean
+  - npm run build:docs
 
 deploy:
   github_token: $TRAVIS_GITHUB_TOKEN
