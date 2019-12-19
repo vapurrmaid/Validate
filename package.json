@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "build:clean": "npm run clean:build && npm run build",
+    "build:clean": "npm run clean:build && npm run build && npm run build:docs",
     "build:docs": "typedoc",
     "clean": "npm run clean:build && npm run clean:jest",
     "clean:build": "rimraf dist",
