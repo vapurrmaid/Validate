@@ -32,6 +32,7 @@
   "scripts": {
     "build": "tsc -p .",
     "build:clean": "npm run clean:build && npm run build",
+    "build:docs": "typedoc",
     "clean": "npm run clean:build && npm run clean:jest",
     "clean:build": "rimraf dist",
     "clean:jest": "jest --clearCache && rimraf coverage",
@@ -60,6 +61,7 @@
     "release-it": "^12.4.3",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.2.0",
+    "typedoc": "^0.15.5",
     "typescript": "^3.7.3"
   },
   "husky": {
