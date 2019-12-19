@@ -1,11 +1,5 @@
 import { ValidateNegation } from './ValidateNegation';
 
-/**
- * Class assisting in validation with maintainable, readable expressions.
- * Inspired by the Java Package org.apache.commons.lang3
- *
- * @see {@link https://commons.apache.org/proper/commons-lang/javadocs/api-3.1/org/apache/commons/lang3/Validate.html|Validate}
- */
 export class Validate {
   /**
    * Validates that the provided number is exclusively between the start and
@@ -53,6 +47,9 @@ export class Validate {
     }
   }
 
+  /**
+   * @returns A class implementing the negation of Validate.
+   */
   public static get not(): ValidateNegation {
     return ValidateNegation;
   }
