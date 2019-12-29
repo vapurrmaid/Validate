@@ -61,6 +61,32 @@ describe('Validate', () => {
     });
   });
 
+  describe('Validate.isNull', () => {
+    it('does not throw for null values', () => {
+      function shouldNotThrow(): void {
+        Validate.isNull(null, 'test');
+      }
+      expect(shouldNotThrow).not.toThrowError();
+    });
+
+    it.each(
+      [
+        undefined,
+        0,
+        NaN,
+        false,
+        [],
+        {},
+      ],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    )('throws with the provided message for value %s', (value: any) => {
+      function shouldThrow(): void {
+        Validate.isNull(value, 'test');
+      }
+      expect(shouldThrow).toThrowError('test');
+    });
+  });
+
   describe('Validate.isTrue', () => {
     it('does not throw for true expressions', () => {
       function shouldNotThrow(): void {

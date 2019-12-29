@@ -61,6 +61,32 @@ describe('ValidateNegation', () => {
     });
   });
 
+  describe('ValidateNegation.isNull', () => {
+    it('throws with the provided message if the value is null', () => {
+      function shouldThrow(): void {
+        ValidateNegation.isNull(null, 'test');
+      }
+      expect(shouldThrow).toThrowError('test');
+    });
+
+    it.each(
+      [
+        undefined,
+        0,
+        NaN,
+        false,
+        [],
+        {},
+      ],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    )('does not throw for value %s', (value: any) => {
+      function shouldNotThrow(): void {
+        ValidateNegation.isNull(value, 'test');
+      }
+      expect(shouldNotThrow).not.toThrowError();
+    });
+  });
+
   describe('ValidateNegation.isTrue', () => {
     it('does not throw for false expressions', () => {
       function shouldNotThrow(): void {
