@@ -8,7 +8,7 @@ on:
       - 'releases/*'
 
 jobs:
-  run-test:
+  coverage-check:
     runs-on: ubuntu-latest
     steps:
       -
@@ -19,15 +19,7 @@ jobs:
          run: |
            npm install
            npm run test:coverage
-    
-  coverage-check:
-    runs-on: ubuntu-latest
-    needs: [run-test]
-    steps:
-      - 
-        name: Checkout
-        uses: actions/checkout@v1
-      - 
+      -
         name: Coverage check
         uses: devmasx/coverage-check-action@v1.1.0
         with:
