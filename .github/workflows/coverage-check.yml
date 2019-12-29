@@ -1,0 +1,37 @@
+name: coverage-check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+      -
+         name: Checkout
+         uses: actions/checkout@v1
+      -
+         name: Run Tests
+         run: |
+           npm install
+           npm run test:coverage
+    
+  coverage-check:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@v1
+      - 
+        name: Coverage check
+        uses: devmasx/coverage-check-action@v1.1.0
+        with:
+          type: lcov
+          result_path: coverage/lcov.info
+          min_coverage: 100
+          token: ${{secrets.GITHUB_TOKEN}}
+
