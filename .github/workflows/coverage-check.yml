@@ -34,5 +34,5 @@ jobs:
           type: lcov
           result_path: coverage/lcov.info
           min_coverage: 100
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{secrets.DEVMASX_COVERAGE_CHECK_ACTION_GH_TOKEN}}
 
