@@ -34,6 +34,21 @@ export class Validate {
   }
 
   /**
+   * Validates that the provided value is null; otherwise throws an Error with
+   * the provided message.
+   *
+   * @param value Value to be validated as null
+   * @param message Error message
+   * @throws Error if the value is not null
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public static isNull(value: any, message: string): void {
+    if (value !== null) {
+      throw new Error(message);
+    }
+  }
+
+  /**
    * Validates that the provided expression is true; otherwise throws an
    * Error with the provided message.
    *
