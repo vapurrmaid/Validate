@@ -35,3 +35,6 @@ lib-cov
 # TypeScript
 *.tsbuildinfo
 typings/
+
+# Vs Code
+.vscode
