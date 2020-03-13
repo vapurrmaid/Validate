@@ -37,9 +37,7 @@
     "clean:build": "rimraf dist",
     "clean:docs": "rimraf docs",
     "clean:jest": "jest --clearCache && rimraf coverage",
-    "lint": "npm run lint:js && npm run lint:md",
-    "lint:js": "eslint . --color --ext .ts src",
-    "lint:md": "markdownlint --ignore \"**/node_modules/**\" .",
+    "lint": "eslint . --color --ext .ts src",
     "release": "cross-env ./scripts/release-it.sh",
     "release:beta": "cross-env ./scripts/release-it.sh --beta",
     "test": "jest",
@@ -58,7 +56,7 @@
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
-    "markdownlint-cli": "^0.20.0",
+    "prettier": "^1.19.1",
     "release-it": "^12.4.3",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.2.0",
@@ -68,13 +66,13 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm audit"
+      "pre-push": "yarn audit"
     }
   },
   "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix",
-      "git add"
+    "*.{js,ts}": "eslint --fix",
+    "*.{js,json,md,ts,yaml,yml}": [
+      "prettier --print-width=80 --prose-wrap=always --write"
     ]
   }
 }
