@@ -37,9 +37,7 @@
     "clean:build": "rimraf dist",
     "clean:docs": "rimraf docs",
     "clean:jest": "jest --clearCache && rimraf coverage",
-    "lint": "npm run lint:js && npm run lint:md",
-    "lint:js": "eslint . --color --ext .ts src",
-    "lint:md": "markdownlint --ignore \"**/node_modules/**\" .",
+    "lint": "eslint . --color --ext .ts src",
     "release": "cross-env ./scripts/release-it.sh",
     "release:beta": "cross-env ./scripts/release-it.sh --beta",
     "test": "jest",
@@ -48,33 +46,33 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.24",
-    "@typescript-eslint/eslint-plugin": "^2.12.0",
-    "@typescript-eslint/parser": "^2.12.0",
-    "cross-env": "^6.0.3",
+    "@types/jest": "^25.1.4",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
-    "husky": "^3.1.0",
-    "jest": "^24.9.0",
-    "lint-staged": "^9.5.0",
-    "markdownlint-cli": "^0.20.0",
-    "release-it": "^12.4.3",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1",
+    "release-it": "^13.0.2",
     "rimraf": "^3.0.0",
-    "ts-jest": "^24.2.0",
-    "typedoc": "^0.15.5",
-    "typescript": "^3.7.3"
+    "ts-jest": "^25.2.1",
+    "typedoc": "^0.16.11",
+    "typescript": "^3.8.3"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm audit"
+      "pre-push": "yarn audit"
     }
   },
   "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix",
-      "git add"
+    "*.{js,ts}": "eslint --fix",
+    "*.{js,json,md,ts,yaml,yml}": [
+      "prettier --print-width=80 --prose-wrap=always --write"
     ]
   }
 }

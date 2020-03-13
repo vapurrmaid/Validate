@@ -1,15 +1,21 @@
 #!/bin/bash
 
-npm i
-npm run lint
-npm run test
-npm run build:clean
+set -eoux pipefail
 
-if [ "$1" == "" ]; then
+cd $(git rev-parse --show-toplevel)
+
+BETA=${1:-}
+
+yarn install
+yarn lint
+yarn test
+yarn build:clean
+
+if [ "$BETA" == "" ]; then
   ./node_modules/.bin/release-it
-elif [ "$1" == "--beta" ]; then
+elif [ "$BETA" == "--beta" ]; then
   ./node_modules/.bin/release-it --preRelease=beta
 else
-  echo "$1 is not recognized"
+  echo "$BETA is not a recognized option"
   exit 1
 fi
