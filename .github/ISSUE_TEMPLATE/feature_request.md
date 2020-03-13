@@ -1,15 +1,12 @@
 ---
 name: Feature Request
 about: Ideas are welcome!
-title: '[FEAT]'
-labels: 'feature :sparkles:'
-assignees: ''
-
+title: "[FEAT]"
+labels: "feature :sparkles:"
+assignees: ""
 ---
 
-<!-- markdownlint-disable MD025 -->
 # Summary
-<!-- markdownlint-enable MD025 -->
 
 <!-- 1-3 sentences describing the change at a high-level. -->
 

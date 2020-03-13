@@ -1,4 +1,4 @@
-import { ValidateNegation } from './ValidateNegation';
+import { ValidateNegation } from "./ValidateNegation";
 
 export class Validate {
   /**
@@ -11,7 +11,12 @@ export class Validate {
    * @param message RangeError message if the value is outside the boundaries
    * @throws RangeError if the value is outside the boundaries
    */
-  public static exclusiveBetween(start: number, end: number, value: number, message: string): void {
+  static exclusiveBetween(
+    start: number,
+    end: number,
+    value: number,
+    message: string
+  ): void {
     if (value <= start || value >= end) {
       throw new RangeError(message);
     }
@@ -27,7 +32,12 @@ export class Validate {
    * @param message RangeError message if the value is outside the boundaries
    * @throws RangeError if the value is outside the boundaries
    */
-  public static inclusiveBetween(start: number, end: number, value: number, message: string): void {
+  static inclusiveBetween(
+    start: number,
+    end: number,
+    value: number,
+    message: string
+  ): void {
     if (value < start || value > end) {
       throw new RangeError(message);
     }
@@ -42,7 +52,7 @@ export class Validate {
    * @throws Error if the value is not null
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public static isNull(value: any, message: string): void {
+  static isNull(value: any, message: string): void {
     if (value !== null) {
       throw new Error(message);
     }
@@ -56,7 +66,7 @@ export class Validate {
    * @param message Error message
    * @throws Error if the expression is not true
    */
-  public static isTrue(expression: boolean, message: string): void {
+  static isTrue(expression: boolean, message: string): void {
     if (!expression) {
       throw new Error(message);
     }
@@ -65,7 +75,7 @@ export class Validate {
   /**
    * @returns A class implementing the negation of Validate.
    */
-  public static get not(): ValidateNegation {
+  static get not(): ValidateNegation {
     return ValidateNegation;
   }
 }

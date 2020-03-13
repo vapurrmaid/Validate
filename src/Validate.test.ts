@@ -1,110 +1,103 @@
-import { Validate } from './Validate';
+import { Validate } from "./Validate";
 
-describe('Validate', () => {
-  describe('Validate.exclusiveBetween', () => {
-    it('does not throw if the value is within bounds', () => {
+describe("Validate", () => {
+  describe("Validate.exclusiveBetween", () => {
+    it("does not throw if the value is within bounds", () => {
       function shouldNotThrow(): void {
-        Validate.exclusiveBetween(0, 10, 5, 'test');
+        Validate.exclusiveBetween(0, 10, 5, "test");
       }
       expect(shouldNotThrow).not.toThrowError();
     });
 
-    it('throws with the provided message if the value is on the lower bound', () => {
+    it("throws with the provided message if the value is on the lower bound", () => {
       function shouldThrow(): void {
-        Validate.exclusiveBetween(0, 10, 0, 'test');
+        Validate.exclusiveBetween(0, 10, 0, "test");
       }
-      expect(shouldThrow).toThrowError('test');
+      expect(shouldThrow).toThrowError("test");
     });
 
-    it('throws with the provided message if the value is on the upper bound', () => {
+    it("throws with the provided message if the value is on the upper bound", () => {
       function shouldThrow(): void {
-        Validate.exclusiveBetween(0, 10, 10, 'test');
+        Validate.exclusiveBetween(0, 10, 10, "test");
       }
-      expect(shouldThrow).toThrowError('test');
+      expect(shouldThrow).toThrowError("test");
     });
 
-    it('throws with the provided message if the value is not within bounds', () => {
+    it("throws with the provided message if the value is not within bounds", () => {
       function shouldThrow(): void {
-        Validate.exclusiveBetween(0, 1, 2, 'test');
+        Validate.exclusiveBetween(0, 1, 2, "test");
       }
-      expect(shouldThrow).toThrowError('test');
+      expect(shouldThrow).toThrowError("test");
     });
   });
 
-  describe('Validate.inclusiveBetween', () => {
-    it('does not throw if the value is within bounds', () => {
+  describe("Validate.inclusiveBetween", () => {
+    it("does not throw if the value is within bounds", () => {
       function shouldNotThrow(): void {
-        Validate.inclusiveBetween(0, 10, 5, 'test');
+        Validate.inclusiveBetween(0, 10, 5, "test");
       }
       expect(shouldNotThrow).not.toThrowError();
     });
 
-    it('does not throw if the value is on the lower bound', () => {
+    it("does not throw if the value is on the lower bound", () => {
       function shouldNotThrow(): void {
-        Validate.inclusiveBetween(0, 10, 0, 'test');
+        Validate.inclusiveBetween(0, 10, 0, "test");
       }
       expect(shouldNotThrow).not.toThrowError();
     });
 
-    it('does not throw if the value is on the upper bound', () => {
+    it("does not throw if the value is on the upper bound", () => {
       function shouldNotThrow(): void {
-        Validate.inclusiveBetween(0, 10, 10, 'test');
+        Validate.inclusiveBetween(0, 10, 10, "test");
       }
       expect(shouldNotThrow).not.toThrowError();
     });
 
-    it('throws with the provided message if the value is not within bounds', () => {
+    it("throws with the provided message if the value is not within bounds", () => {
       function shouldThrow(): void {
-        Validate.inclusiveBetween(0, 1, 2, 'test');
+        Validate.inclusiveBetween(0, 1, 2, "test");
       }
-      expect(shouldThrow).toThrowError('test');
+      expect(shouldThrow).toThrowError("test");
     });
   });
 
-  describe('Validate.isNull', () => {
-    it('does not throw for null values', () => {
+  describe("Validate.isNull", () => {
+    it("does not throw for null values", () => {
       function shouldNotThrow(): void {
-        Validate.isNull(null, 'test');
+        Validate.isNull(null, "test");
       }
       expect(shouldNotThrow).not.toThrowError();
     });
 
     it.each(
-      [
-        undefined,
-        0,
-        NaN,
-        false,
-        [],
-        {},
-      ],
+      [undefined, 0, NaN, false, [], {}]
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    )('throws with the provided message for value %s', (value: any) => {
+    )("throws with the provided message for value %s", (value: any) => {
       function shouldThrow(): void {
-        Validate.isNull(value, 'test');
+        Validate.isNull(value, "test");
       }
-      expect(shouldThrow).toThrowError('test');
+      expect(shouldThrow).toThrowError("test");
     });
   });
 
-  describe('Validate.isTrue', () => {
-    it('does not throw for true expressions', () => {
+  describe("Validate.isTrue", () => {
+    it("does not throw for true expressions", () => {
       function shouldNotThrow(): void {
-        Validate.isTrue(true, 'test');
+        Validate.isTrue(true, "test");
       }
       expect(shouldNotThrow).not.toThrowError();
     });
 
-    it('throws with the provided message for false expressions', () => {
+    it("throws with the provided message for false expressions", () => {
       function shouldThrow(): void {
-        Validate.isTrue(false, 'test');
+        Validate.isTrue(false, "test");
       }
-      expect(shouldThrow).toThrowError('test');
+      expect(shouldThrow).toThrowError("test");
     });
   });
 
-  describe('Valid.not', () => {
-    it('is defined', () => {
+  describe("Valid.not", () => {
+    it("is defined", () => {
       expect(Validate.not).toBeDefined();
     });
   });
