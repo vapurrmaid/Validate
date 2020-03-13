@@ -1,3 +1,4 @@
+*.lock
 *.sh
 
 coverage
@@ -8,3 +9,4 @@ yarn.lock
 .eslintignore
 .gitignore
 .prettierignore
+LICENSE

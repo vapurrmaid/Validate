@@ -66,6 +66,13 @@ exists and can/should be explored for the style that makes most sense for
 you/your team. The bottom line of this and similar frameworks is to improve
 domain/logic expression and readability of source code.
 
+## Contributing
+
+- [Contributing](./.github/CONTRIBUTING.md) contains a very short basic list of
+  requirements and notices for contributing
+- [Wiki](https://github.com/vapurrmaid/Validate/wiki) contains all relevant
+  documentation for development and releases
+
 [1]:
   https://commons.apache.org/proper/commons-lang/javadocs/api-3.1/org/apache/commons/lang3/Validate.html
 [2]: https://nodejs.org/api/assert.html
