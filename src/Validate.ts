@@ -1,3 +1,4 @@
+import { StaticChainableProperties } from "./interface";
 import { ValidateNegation } from "./ValidateNegation";
 
 export class Validate {
@@ -51,11 +52,12 @@ export class Validate {
    * @param message Error message
    * @throws Error if the value is not null
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  static isNull(value: any, message: string): void {
+  static isNull(value: unknown, message: string): StaticChainableProperties {
     if (value !== null) {
       throw new Error(message);
     }
+
+    return ValidateStaticChain;
   }
 
   /**
@@ -66,10 +68,15 @@ export class Validate {
    * @param message Error message
    * @throws Error if the expression is not true
    */
-  static isTrue(expression: boolean, message: string): void {
+  static isTrue(
+    expression: boolean,
+    message: string
+  ): StaticChainableProperties {
     if (!expression) {
       throw new Error(message);
     }
+
+    return ValidateStaticChain;
   }
 
   /**
@@ -79,3 +86,8 @@ export class Validate {
     return ValidateNegation;
   }
 }
+
+const ValidateStaticChain: StaticChainableProperties = {
+  isNull: Validate.isNull,
+  isTrue: Validate.isTrue
+};

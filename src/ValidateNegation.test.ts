@@ -69,15 +69,15 @@ describe("ValidateNegation", () => {
       expect(shouldThrow).toThrowError("test");
     });
 
-    it.each(
-      [undefined, 0, NaN, false, [], {}]
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    )("does not throw for value %s", (value: any) => {
-      function shouldNotThrow(): void {
-        ValidateNegation.isNull(value, "test");
+    it.each([undefined, 0, NaN, false, [], {}])(
+      "does not throw for value %s",
+      (value: unknown) => {
+        function shouldNotThrow(): void {
+          ValidateNegation.isNull(value, "test");
+        }
+        expect(shouldNotThrow).not.toThrowError();
       }
-      expect(shouldNotThrow).not.toThrowError();
-    });
+    );
   });
 
   describe("ValidateNegation.isTrue", () => {
@@ -93,6 +93,17 @@ describe("ValidateNegation", () => {
         ValidateNegation.isTrue(true, "test");
       }
       expect(shouldThrow).toThrowError("test");
+    });
+  });
+
+  describe("Chaining", () => {
+    it("works", () => {
+      expect(() => {
+        ValidateNegation.isNull("hello", "")
+          .isNull("hello", "")
+          .isTrue(false, "")
+          .isTrue(false, "");
+      }).not.toThrow();
     });
   });
 });

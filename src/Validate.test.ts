@@ -69,15 +69,15 @@ describe("Validate", () => {
       expect(shouldNotThrow).not.toThrowError();
     });
 
-    it.each(
-      [undefined, 0, NaN, false, [], {}]
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    )("throws with the provided message for value %s", (value: any) => {
-      function shouldThrow(): void {
-        Validate.isNull(value, "test");
+    it.each([undefined, 0, NaN, false, [], {}])(
+      "throws with the provided message for value %s",
+      (value: unknown) => {
+        function shouldThrow(): void {
+          Validate.isNull(value, "test");
+        }
+        expect(shouldThrow).toThrowError("test");
       }
-      expect(shouldThrow).toThrowError("test");
-    });
+    );
   });
 
   describe("Validate.isTrue", () => {
@@ -99,6 +99,17 @@ describe("Validate", () => {
   describe("Valid.not", () => {
     it("is defined", () => {
       expect(Validate.not).toBeDefined();
+    });
+  });
+
+  describe("Chaining", () => {
+    it("works", () => {
+      expect(() => {
+        Validate.isNull(null, "")
+          .isNull(null, "")
+          .isTrue(true, "")
+          .isTrue(true, "");
+      }).not.toThrow();
     });
   });
 });
