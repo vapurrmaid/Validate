@@ -3,7 +3,7 @@ name: Feature Request
 about: Ideas are welcome!
 title: "[FEAT]"
 labels: "feature :sparkles:"
-assignees: ""
+assignees: vapurrmaid
 ---
 
 # Summary

@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: "A detailed report helps us improve!"
+about: A detailed report helps us improve!
 title: "[BUG]"
 labels: "bug :bug:"
 assignees: vapurrmaid
