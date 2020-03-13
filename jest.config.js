@@ -5,10 +5,10 @@
  */
 module.exports = {
   clearMocks: true,
-  coverageDirectory: 'coverage',
+  coverageDirectory: "coverage",
   resetMocks: true,
   transform: {
-    '^.+\\.ts$': 'ts-jest', // * Converts TS tests -> JS
+    "^.+\\.ts$": "ts-jest" // * Converts TS tests -> JS
   },
-  verbose: true,
+  verbose: true
 };
