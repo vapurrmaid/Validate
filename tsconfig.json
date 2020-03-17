@@ -15,9 +15,10 @@
   },
   "exclude": ["**/__mocks__/*.ts", "node_modules", "**/*.test.ts"],
   "typedocOptions": {
-    "exclude": "./src/ValidateNegation.ts",
     "excludeExternals": true,
-    "mode": "file",
+    "excludeNotExported": true,
+    "excludePrivate": true,
+    "mode": "library",
     "out": "docs",
     "readme": "none",
     "theme": "minimal",
