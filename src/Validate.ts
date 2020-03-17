@@ -19,6 +19,10 @@ const Expression = {
     return n >= nr.start && n <= nr.end;
   },
 
+  isDefined(value: unknown) {
+    return value !== undefined;
+  },
+
   isEqualOrGreaterThan(value: number, n: number) {
     return n >= value;
   },
@@ -35,23 +39,37 @@ const Expression = {
     return n < value;
   },
 
-  isTrue(expression: boolean) {
-    return expression;
-  },
-
   isNull(value: unknown) {
     return value === null;
+  },
+
+  isNullish(value: unknown) {
+    return value === null || value === undefined;
+  },
+
+  isTrue(expression: boolean) {
+    return expression;
   }
 };
 
 const pickStaticChain = (
   v: ValidateProperties | ValidatePropertiesWithNegation
 ): StaticChainableProperties => ({
+  isDefined: v.isDefined,
   isNull: v.isNull,
+  isNullish: v.isNullish,
   isTrue: v.isTrue
 });
 
 export const Validate: ValidatePropertiesWithNegation = {
+  isDefined(value: unknown, message: string) {
+    if (!Expression.isDefined(value)) {
+      throw new Error(message);
+    }
+
+    return pickStaticChain(this);
+  },
+
   /**
    * Validates that the provided value is null; otherwise throws an Error with
    * the provided message
@@ -61,6 +79,14 @@ export const Validate: ValidatePropertiesWithNegation = {
    */
   isNull(value: unknown, message: string) {
     if (!Expression.isNull(value)) {
+      throw new Error(message);
+    }
+
+    return pickStaticChain(this);
+  },
+
+  isNullish(value: unknown, message: string) {
+    if (!Expression.isNullish(value)) {
       throw new Error(message);
     }
 
@@ -195,8 +221,24 @@ export const Validate: ValidatePropertiesWithNegation = {
 
   not(): ValidateProperties {
     return {
+      isDefined(value: unknown, message: string) {
+        if (Expression.isDefined(value)) {
+          throw new Error(message);
+        }
+
+        return pickStaticChain(this);
+      },
+
       isNull(value: unknown, message: string) {
         if (Expression.isNull(value)) {
+          throw new Error(message);
+        }
+
+        return pickStaticChain(this);
+      },
+
+      isNullish(value: unknown, message: string) {
+        if (Expression.isNullish(value)) {
           throw new Error(message);
         }
 

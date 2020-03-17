@@ -7,7 +7,9 @@ export interface ValidateProperties extends StaticChainableProperties {
 }
 
 export interface StaticChainableProperties {
+  isDefined(value: unknown, message: string): StaticChainableProperties;
   isNull(value: unknown, message: string): StaticChainableProperties;
+  isNullish(value: unknown, message: string): StaticChainableProperties;
   isTrue(value: unknown, message: string): StaticChainableProperties;
 }
 

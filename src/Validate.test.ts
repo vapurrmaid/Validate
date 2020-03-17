@@ -22,6 +22,32 @@ describe("Validate StaticChainableProperties", () => {
     });
   });
 
+  describe("isDefined", () => {
+    it("does not throw for defined values", () => {
+      [0, null, false].forEach(val => {
+        expect(() => Validate.isDefined(val, "test")).not.toThrow();
+      });
+    });
+
+    it("throws with the provided message for undefined", () => {
+      expect(() => Validate.isDefined(undefined, "test")).toThrowError("test");
+    });
+  });
+
+  describe("isDefined Negation", () => {
+    it("does not throw for undefined", () => {
+      expect(() => Validate.not().isDefined(undefined, "test")).not.toThrow();
+    });
+
+    it("throws with the provided message for defined values", () => {
+      [0, null, false].forEach(val => {
+        expect(() => Validate.not().isDefined(val, "test")).toThrowError(
+          "test"
+        );
+      });
+    });
+  });
+
   describe("isNull", () => {
     it("does not throw for null values", () => {
       function shouldNotThrow(): void {
@@ -58,6 +84,36 @@ describe("Validate StaticChainableProperties", () => {
         expect(shouldNotThrow).not.toThrowError();
       }
     );
+  });
+
+  describe("isNullish", () => {
+    it("does not throw for null and undefined", () => {
+      [null, undefined].forEach(val => {
+        expect(() => Validate.isNullish(val, "test")).not.toThrow();
+      });
+    });
+
+    it("throws with the provided message for non-nullish values", () => {
+      [0, false, {}, [], ""].forEach(val => {
+        expect(() => Validate.isNullish(val, "test")).toThrowError("test");
+      });
+    });
+  });
+
+  describe("isNullish Negation", () => {
+    it("does not throw for non-nullish values", () => {
+      [0, false, {}, [], ""].forEach(val => {
+        expect(() => Validate.not().isNullish(val, "test")).not.toThrow();
+      });
+    });
+
+    it("throws with the provided message for null and undefined", () => {
+      [null, undefined].forEach(val => {
+        expect(() => Validate.not().isNullish(val, "test")).toThrowError(
+          "test"
+        );
+      });
+    });
   });
 
   describe("isTrue", () => {
