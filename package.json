@@ -1,7 +1,7 @@
 {
   "name": "@vapurrmaid/validate",
   "version": "0.3.0",
-  "description": "An incredibly simple, lightweight, zero-dependency package for writing maintainable, easy-to-read validation assertions. Inspired by the Java library org.apache.commons.lang3.Validate, NodeJS assert, Chai BDD assertions and Jest matchers.",
+  "description": "An incredibly simple, lightweight, zero-dependency package for writing maintainable, easy-to-read validation assertions.",
   "keywords": [
     "assertion",
     "common",
