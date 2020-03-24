@@ -62,7 +62,7 @@
     "release-it": "^13.3.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^25.2.1",
-    "typedoc": "^0.17.0",
+    "typedoc": "^0.17.3",
     "typescript": "^3.8.3"
   },
   "husky": {
