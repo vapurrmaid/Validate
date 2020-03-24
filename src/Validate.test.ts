@@ -24,7 +24,7 @@ describe("Validate StaticChainableProperties", () => {
 
   describe("isDefined", () => {
     it("does not throw for defined values", () => {
-      [0, null, false].forEach(val => {
+      [0, null, false].forEach((val) => {
         expect(() => Validate.isDefined(val, "test")).not.toThrow();
       });
     });
@@ -40,7 +40,7 @@ describe("Validate StaticChainableProperties", () => {
     });
 
     it("throws with the provided message for defined values", () => {
-      [0, null, false].forEach(val => {
+      [0, null, false].forEach((val) => {
         expect(() => Validate.not().isDefined(val, "test")).toThrowError(
           "test"
         );
@@ -88,13 +88,13 @@ describe("Validate StaticChainableProperties", () => {
 
   describe("isNullish", () => {
     it("does not throw for null and undefined", () => {
-      [null, undefined].forEach(val => {
+      [null, undefined].forEach((val) => {
         expect(() => Validate.isNullish(val, "test")).not.toThrow();
       });
     });
 
     it("throws with the provided message for non-nullish values", () => {
-      [0, false, {}, [], ""].forEach(val => {
+      [0, false, {}, [], ""].forEach((val) => {
         expect(() => Validate.isNullish(val, "test")).toThrowError("test");
       });
     });
@@ -102,13 +102,13 @@ describe("Validate StaticChainableProperties", () => {
 
   describe("isNullish Negation", () => {
     it("does not throw for non-nullish values", () => {
-      [0, false, {}, [], ""].forEach(val => {
+      [0, false, {}, [], ""].forEach((val) => {
         expect(() => Validate.not().isNullish(val, "test")).not.toThrow();
       });
     });
 
     it("throws with the provided message for null and undefined", () => {
-      [null, undefined].forEach(val => {
+      [null, undefined].forEach((val) => {
         expect(() => Validate.not().isNullish(val, "test")).toThrowError(
           "test"
         );
@@ -218,36 +218,28 @@ describe("Validate ChainableNumberProperties", () => {
   describe("exclusiveBetween Negation", () => {
     it("does not throw if the value is out of bounds", () => {
       function shouldNotThrow(): void {
-        Validate.not()
-          .n(2)
-          .exclusiveBetween(0, 1, "test");
+        Validate.not().n(2).exclusiveBetween(0, 1, "test");
       }
       expect(shouldNotThrow).not.toThrowError();
     });
 
     it("does not throw if the value is on the lower bound", () => {
       function shouldNotThrow(): void {
-        Validate.not()
-          .n(0)
-          .exclusiveBetween(0, 1, "test");
+        Validate.not().n(0).exclusiveBetween(0, 1, "test");
       }
       expect(shouldNotThrow).not.toThrowError("test");
     });
 
     it("does not throw if the value is on the upper bound", () => {
       function shouldNotThrow(): void {
-        Validate.not()
-          .n(10)
-          .exclusiveBetween(0, 10, "test");
+        Validate.not().n(10).exclusiveBetween(0, 10, "test");
       }
       expect(shouldNotThrow).not.toThrowError("test");
     });
 
     it("throws with the provided message if the value is within bounds", () => {
       function shouldThrow(): void {
-        Validate.not()
-          .n(5)
-          .exclusiveBetween(0, 10, "test");
+        Validate.not().n(5).exclusiveBetween(0, 10, "test");
       }
       expect(shouldThrow).toThrowError("test");
     });
@@ -286,36 +278,28 @@ describe("Validate ChainableNumberProperties", () => {
   describe("inclusiveBetween Negation", () => {
     it("does not throw if the value is out of bounds", () => {
       function shouldNotThrow(): void {
-        Validate.not()
-          .n(2)
-          .inclusiveBetween(0, 1, "test");
+        Validate.not().n(2).inclusiveBetween(0, 1, "test");
       }
       expect(shouldNotThrow).not.toThrowError();
     });
 
     it("throws with the provided message if the value is on the lower bound", () => {
       function shouldThrow(): void {
-        Validate.not()
-          .n(0)
-          .inclusiveBetween(0, 10, "test");
+        Validate.not().n(0).inclusiveBetween(0, 10, "test");
       }
       expect(shouldThrow).toThrowError("test");
     });
 
     it("throws with the provided message if the value is on the upper bound", () => {
       function shouldThrow(): void {
-        Validate.not()
-          .n(10)
-          .inclusiveBetween(0, 10, "test");
+        Validate.not().n(10).inclusiveBetween(0, 10, "test");
       }
       expect(shouldThrow).toThrowError("test");
     });
 
     it("throws with the provided message if the value is within bounds", () => {
       function shouldThrow(): void {
-        Validate.not()
-          .n(5)
-          .inclusiveBetween(0, 10, "test");
+        Validate.not().n(5).inclusiveBetween(0, 10, "test");
       }
       expect(shouldThrow).toThrowError("test");
     });
@@ -338,24 +322,20 @@ describe("Validate ChainableNumberProperties", () => {
   describe("is Negation", () => {
     it("does not throw if the values are not identical", () => {
       expect(() => {
-        Validate.not()
-          .n(5)
-          .is(0, "test");
+        Validate.not().n(5).is(0, "test");
       }).not.toThrow();
     });
 
     it("throws with the provided message if the values are identical", () => {
       expect(() => {
-        Validate.not()
-          .n(0)
-          .is(0, "test");
+        Validate.not().n(0).is(0, "test");
       }).toThrowError("test");
     });
   });
 
   describe("isEqualOrGreaterThan", () => {
     it("does not throw if the number is >= value", () => {
-      [3, 4, 5].forEach(val => {
+      [3, 4, 5].forEach((val) => {
         expect(() => {
           Validate.n(5).isEqualOrGreaterThan(val, "test");
         }).not.toThrow();
@@ -363,7 +343,7 @@ describe("Validate ChainableNumberProperties", () => {
     });
 
     it("throws with the provided message if the number is not >= value", () => {
-      [5, 6, 7].forEach(val => {
+      [5, 6, 7].forEach((val) => {
         expect(() => {
           Validate.n(4).isEqualOrGreaterThan(val, "test");
         }).toThrowError("test");
@@ -373,21 +353,17 @@ describe("Validate ChainableNumberProperties", () => {
 
   describe("isEqualOrGreaterThan Negation", () => {
     it("does not throw if the number is not >= value", () => {
-      [3, 4, 5].forEach(val => {
+      [3, 4, 5].forEach((val) => {
         expect(() => {
-          Validate.not()
-            .n(2)
-            .isEqualOrGreaterThan(val, "test");
+          Validate.not().n(2).isEqualOrGreaterThan(val, "test");
         }).not.toThrow();
       });
     });
 
     it("throws with the provided message if the number is >= value", () => {
-      [3, 4, 5].forEach(val => {
+      [3, 4, 5].forEach((val) => {
         expect(() => {
-          Validate.not()
-            .n(5)
-            .isEqualOrGreaterThan(val, "test");
+          Validate.not().n(5).isEqualOrGreaterThan(val, "test");
         }).toThrowError("test");
       });
     });
@@ -395,7 +371,7 @@ describe("Validate ChainableNumberProperties", () => {
 
   describe("isEqualOrLessThan", () => {
     it("does not throw if the number is <= value", () => {
-      [3, 4, 5].forEach(val => {
+      [3, 4, 5].forEach((val) => {
         expect(() => {
           Validate.n(3).isEqualOrLessThan(val, "test");
         }).not.toThrow();
@@ -403,7 +379,7 @@ describe("Validate ChainableNumberProperties", () => {
     });
 
     it("throws with the provided message if the number is not <= value", () => {
-      [3, 4, 5].forEach(val => {
+      [3, 4, 5].forEach((val) => {
         expect(() => {
           Validate.n(6).isEqualOrLessThan(val, "test");
         }).toThrowError("test");
@@ -413,21 +389,17 @@ describe("Validate ChainableNumberProperties", () => {
 
   describe("isEqualOrLessThan Negation", () => {
     it("does not throw if the number is not <= value", () => {
-      [3, 4, 5].forEach(val => {
+      [3, 4, 5].forEach((val) => {
         expect(() => {
-          Validate.not()
-            .n(6)
-            .isEqualOrLessThan(val, "test");
+          Validate.not().n(6).isEqualOrLessThan(val, "test");
         }).not.toThrow();
       });
     });
 
     it("throws with the provided message if the number is <= value", () => {
-      [3, 4, 5].forEach(val => {
+      [3, 4, 5].forEach((val) => {
         expect(() => {
-          Validate.not()
-            .n(3)
-            .isEqualOrLessThan(val, "test");
+          Validate.not().n(3).isEqualOrLessThan(val, "test");
         }).toThrowError("test");
       });
     });
@@ -435,7 +407,7 @@ describe("Validate ChainableNumberProperties", () => {
 
   describe("isGreaterThan", () => {
     it("does not throw if the number is > value", () => {
-      [3, 4].forEach(val => {
+      [3, 4].forEach((val) => {
         expect(() => {
           Validate.n(5).isGreaterThan(val, "test");
         }).not.toThrow();
@@ -443,7 +415,7 @@ describe("Validate ChainableNumberProperties", () => {
     });
 
     it("throws with the provided message if the number is not > value", () => {
-      [4, 5].forEach(val => {
+      [4, 5].forEach((val) => {
         expect(() => {
           Validate.n(val).isGreaterThan(5, "test");
         }).toThrowError("test");
@@ -453,21 +425,17 @@ describe("Validate ChainableNumberProperties", () => {
 
   describe("isGreaterThan Negation", () => {
     it("does not throw if the number is not > value", () => {
-      [3, 4].forEach(val => {
+      [3, 4].forEach((val) => {
         expect(() => {
-          Validate.not()
-            .n(val)
-            .isGreaterThan(4, "test");
+          Validate.not().n(val).isGreaterThan(4, "test");
         }).not.toThrow();
       });
     });
 
     it("throws with the provided message if the number is > value", () => {
-      [3, 4].forEach(val => {
+      [3, 4].forEach((val) => {
         expect(() => {
-          Validate.not()
-            .n(5)
-            .isGreaterThan(val, "test");
+          Validate.not().n(5).isGreaterThan(val, "test");
         }).toThrowError("test");
       });
     });
@@ -475,7 +443,7 @@ describe("Validate ChainableNumberProperties", () => {
 
   describe("isLessThan", () => {
     it("does not throw if the number is < value", () => {
-      [3, 4].forEach(val => {
+      [3, 4].forEach((val) => {
         expect(() => {
           Validate.n(2).isLessThan(val, "test");
         }).not.toThrow();
@@ -483,7 +451,7 @@ describe("Validate ChainableNumberProperties", () => {
     });
 
     it("throws with the provided message if the number is not < value", () => {
-      [4, 5].forEach(val => {
+      [4, 5].forEach((val) => {
         expect(() => {
           Validate.n(val).isLessThan(4, "test");
         }).toThrowError("test");
@@ -493,21 +461,17 @@ describe("Validate ChainableNumberProperties", () => {
 
   describe("isLessThan Negation", () => {
     it("does not throw if the number is not < value", () => {
-      [4, 5].forEach(val => {
+      [4, 5].forEach((val) => {
         expect(() => {
-          Validate.not()
-            .n(val)
-            .isLessThan(4, "test");
+          Validate.not().n(val).isLessThan(4, "test");
         }).not.toThrow();
       });
     });
 
     it("throws with the provided message if the number is < value", () => {
-      [3, 4].forEach(val => {
+      [3, 4].forEach((val) => {
         expect(() => {
-          Validate.not()
-            .n(val)
-            .isLessThan(5, "test");
+          Validate.not().n(val).isLessThan(5, "test");
         }).toThrowError("test");
       });
     });

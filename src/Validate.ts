@@ -2,7 +2,7 @@ import {
   ChainableNumberProperties,
   StaticChainableProperties,
   ValidateProperties,
-  ValidatePropertiesWithNegation
+  ValidatePropertiesWithNegation,
 } from "./interface";
 
 interface NumberRange {
@@ -49,7 +49,7 @@ const Expression = {
 
   isTrue(expression: boolean) {
     return expression;
-  }
+  },
 };
 
 const pickStaticChain = (
@@ -58,7 +58,7 @@ const pickStaticChain = (
   isDefined: v.isDefined,
   isNull: v.isNull,
   isNullish: v.isNullish,
-  isTrue: v.isTrue
+  isTrue: v.isTrue,
 });
 
 export const Validate: ValidatePropertiesWithNegation = {
@@ -215,7 +215,7 @@ export const Validate: ValidatePropertiesWithNegation = {
         }
 
         return this;
-      }
+      },
     };
   },
 
@@ -309,9 +309,9 @@ export const Validate: ValidatePropertiesWithNegation = {
             }
 
             return this;
-          }
+          },
         };
-      }
+      },
     };
-  }
+  },
 };
