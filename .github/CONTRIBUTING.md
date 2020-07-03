@@ -6,8 +6,8 @@ assertions.
 ## Validate's Mission and Vision
 
 Validate's mission is to be a zero-dependency, maintainable, easy-to-use module
-for writing validations. It's vision is to be regarded as improving the clarity
-of production codebases.
+for writing validations. It's vision is to improve the clarity of production
+codebases.
 
 ## Highest Priority
 
