@@ -15,6 +15,7 @@
   },
   "exclude": ["**/__mocks__/*.ts", "node_modules", "**/*.test.ts"],
   "typedocOptions": {
+    "entryPoint": "src/index.ts",
     "excludeExternals": true,
     "excludeNotExported": true,
     "excludePrivate": true,

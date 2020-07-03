@@ -14,21 +14,10 @@ export interface StaticChainableProperties {
 }
 
 export interface ChainableNumberProperties {
-  exclusiveBetween(
-    start: number,
-    end: number,
-    message: string
-  ): ChainableNumberProperties;
-  inclusiveBetween(
-    start: number,
-    end: number,
-    message: string
-  ): ChainableNumberProperties;
+  exclusiveBetween(start: number, end: number, message: string): ChainableNumberProperties;
+  inclusiveBetween(start: number, end: number, message: string): ChainableNumberProperties;
   is(value: number, message: string): ChainableNumberProperties;
-  isEqualOrGreaterThan(
-    value: number,
-    message: string
-  ): ChainableNumberProperties;
+  isEqualOrGreaterThan(value: number, message: string): ChainableNumberProperties;
   isEqualOrLessThan(value: number, message: string): ChainableNumberProperties;
   isGreaterThan(value: number, message: string): ChainableNumberProperties;
   isLessThan(value: number, message: string): ChainableNumberProperties;

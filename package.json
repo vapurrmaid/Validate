@@ -10,7 +10,7 @@
     "validation",
     "validator"
   ],
-  "homepage": "https://github.com/vapurrmaid/Validate",
+  "homepage": "https://vapurrmaid.ca/Validate",
   "bugs": {
     "email": "vapurrmaid@pm.me",
     "url": "https://github.com/vapurrmaid/Validate/issues"
@@ -37,12 +37,14 @@
     "clean:build": "rimraf dist",
     "clean:docs": "rimraf docs",
     "clean:jest": "jest --clearCache && rimraf coverage",
-    "format": "prettier --print-width=80 --prose-wrap=always **/*",
+    "format": "prettier src",
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
     "lint": "eslint . --color --ext .ts src",
-    "release": "cross-env ./scripts/release-it.sh",
-    "release:beta": "cross-env ./scripts/release-it.sh --beta",
+    "pre-release": "yarn && yarn test && yarn lint && yarn format:check && yarn build:clean",
+    "release": "yarn pre-release && release-it",
+    "release:beta": "yarn pre-release && release-it --preRelease=beta",
+    "serve:docs": "live-server docs",
     "test": "jest",
     "test:coverage": "yarn run clean:jest && jest --colors --coverage",
     "test:watch": "jest --watch"
@@ -52,12 +54,14 @@
     "@types/jest": "^26.0.3",
     "@typescript-eslint/eslint-plugin": "^3.5.0",
     "@typescript-eslint/parser": "^3.5.0",
-    "cross-env": "^7.0.2",
+    "@vapurrmaid/prettier-config": "^0.1.1",
     "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
+    "live-server": "^1.2.1",
     "prettier": "^2.0.5",
     "release-it": "^13.6.4",
     "rimraf": "^3.0.0",
@@ -71,8 +75,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix",
-    "*.{js,json,md,ts,yaml,yml}": [
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yaml,yml}": [
       "prettier --print-width=80 --prose-wrap=always --write"
     ]
   }

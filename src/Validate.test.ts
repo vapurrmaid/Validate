@@ -41,9 +41,7 @@ describe("Validate StaticChainableProperties", () => {
 
     it("throws with the provided message for defined values", () => {
       [0, null, false].forEach((val) => {
-        expect(() => Validate.not().isDefined(val, "test")).toThrowError(
-          "test"
-        );
+        expect(() => Validate.not().isDefined(val, "test")).toThrowError("test");
       });
     });
   });
@@ -75,15 +73,12 @@ describe("Validate StaticChainableProperties", () => {
       expect(shouldThrow).toThrowError("test");
     });
 
-    it.each([undefined, 0, NaN, false, [], {}])(
-      "does not throw for value %s",
-      (value: unknown) => {
-        function shouldNotThrow(): void {
-          Validate.not().isNull(value, "test");
-        }
-        expect(shouldNotThrow).not.toThrowError();
+    it.each([undefined, 0, NaN, false, [], {}])("does not throw for value %s", (value: unknown) => {
+      function shouldNotThrow(): void {
+        Validate.not().isNull(value, "test");
       }
-    );
+      expect(shouldNotThrow).not.toThrowError();
+    });
   });
 
   describe("isNullish", () => {
@@ -109,9 +104,7 @@ describe("Validate StaticChainableProperties", () => {
 
     it("throws with the provided message for null and undefined", () => {
       [null, undefined].forEach((val) => {
-        expect(() => Validate.not().isNullish(val, "test")).toThrowError(
-          "test"
-        );
+        expect(() => Validate.not().isNullish(val, "test")).toThrowError("test");
       });
     });
   });

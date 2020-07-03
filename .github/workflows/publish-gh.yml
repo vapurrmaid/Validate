@@ -10,16 +10,19 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+
       - name: Install
-        run: npm install
+        run: yarn
+
       - name: Build
-        run: npm run build:clean && npm run build:docs
+        run: yarn build:clean && yarn build:docs
+
       - name: Deploy
         if: success()
-        uses: crazy-max/ghaction-github-pages@v1.3.0
+        uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
           build_dir: docs
         env:
-          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
