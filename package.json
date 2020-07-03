@@ -1,6 +1,6 @@
 {
   "name": "@vapurrmaid/validate",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "An incredibly simple, lightweight, zero-dependency package for writing maintainable, easy-to-read validation assertions.",
   "keywords": [
     "assertion",
