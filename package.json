@@ -32,7 +32,7 @@
   "scripts": {
     "build": "tsc -p .",
     "build:clean": "yarn run clean:build && yarn run build",
-    "build:docs": "typedoc",
+    "build:docs": "typedoc && touch docs/.nojekyll && touch docs/interfaces/.nojekyll && touch docs/modules/.nojekyll",
     "clean": "yarn run clean:build && yarn run clean:docs && yarn run clean:jest",
     "clean:build": "rimraf dist",
     "clean:docs": "rimraf docs",
