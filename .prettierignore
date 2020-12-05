@@ -6,8 +6,5 @@ dist
 docs
 node_modules
 yarn.lock
-.editorconfig
 .eslintignore
-.gitignore
-.prettierignore
 LICENSE

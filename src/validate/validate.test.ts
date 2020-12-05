@@ -1,4 +1,4 @@
-import { Validate } from "./Validate";
+import { Validate } from ".";
 
 describe("Validate StaticChainableProperties", () => {
   describe("Chaining", () => {

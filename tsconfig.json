@@ -1,16 +1,23 @@
 {
   "compilerOptions": {
+    "allowJs": false,
+    "allowUnreachableCode": false,
     "alwaysStrict": true,
     "declaration": true,
     "diagnostics": true,
     "forceConsistentCasingInFileNames": true,
+    "lib": [],
     "module": "CommonJS",
     "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "dist",
+    "pretty": true,
     "rootDir": "src",
     "skipLibCheck": true,
+    "sourceMap": true,
     "strict": true,
     "target": "ES6"
   },
