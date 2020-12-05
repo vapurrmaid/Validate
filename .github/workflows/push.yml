@@ -10,11 +10,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Install
         run: yarn
-      - name: Check Format
-        run: yarn format:check
-      - name: Lint
-        run: yarn lint
-      - name: Test
-        run: yarn test
-      - name: Build
-        run: yarn build:clean
+      - name: Check pre-release requirements
+        run: yarn pre-release
