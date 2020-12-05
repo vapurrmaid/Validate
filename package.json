@@ -81,7 +81,7 @@
       "prettier --write"
     ],
     "*.{json,md,yaml,yml}": [
-      "prettier --print-width=80 --prose-wrap=always --write"
+      "prettier --write"
     ]
   }
 }
