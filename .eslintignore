@@ -1,2 +1,4 @@
-**/__mocks__/*
-**/dist/*
+dist
+docs
+node_modules
+jest.config.js
